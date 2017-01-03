@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         downloadMessages();
     }
 
-    private void downloadMessages() {
+    public void downloadMessages() {
         HttpURLConnection urlConnection = null;
         try {
             URL url = new URL("http://192.168.1.33:4567/fetchAllMessages");
@@ -150,12 +150,12 @@ public class MainActivity extends AppCompatActivity {
                         StringBuilder buffer = new StringBuilder();
                         int data;
                         data = isw.read();
-                        while (data != -1) {
+                       // while (data != -1) {
                             char c = (char) data;
                             buffer.append(c);
                             System.out.print(c);
                             data = isw.read();
-                        }
+                       // }
                         Type type = new TypeToken<List<String>>() {
                         }.getType();
                         messages = new Gson().fromJson(buffer.toString(), type);
